@@ -5,6 +5,10 @@ Single-board kanban app. FastAPI + SQLite backend, React + TypeScript frontend, 
 ## Run
 
 ```bash
+git clone https://github.com/rehanalizia973-web/NOVA8-Kanban-Board.git
+
+cd NOVA8-Kanban-Board
+
 docker compose up --build
 ```
 
