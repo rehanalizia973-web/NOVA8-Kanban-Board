@@ -1,0 +1,235 @@
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-border: #dfe2e8;
+  --color-border-strong: #b9bec8;
+  --color-text: #1a1d22;
+  --color-text-muted: #6b7280;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-danger: #dc2626;
+  --color-over: #e0e7ff;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.board-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-5);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.new-task-form {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.new-task-form input {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  min-width: 260px;
+  font: inherit;
+}
+
+.new-task-form input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.new-task-form button {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+}
+
+.new-task-form button:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.board-status {
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.board-error button {
+  margin-left: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.column {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.column-over {
+  background: var(--color-over);
+  border-color: var(--color-accent);
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.column-header h2 {
+  margin: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+}
+
+.column-count {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+}
+
+.column-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  flex: 1;
+}
+
+.column-empty {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  text-align: center;
+  padding: var(--space-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  margin: 0;
+}
+
+.task-card {
+  display: flex;
+  gap: var(--space-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.task-card-drag {
+  flex: 1;
+  cursor: grab;
+  user-select: none;
+}
+
+.task-card-drag:active {
+  cursor: grabbing;
+}
+
+.task-card-title {
+  margin: 0 0 var(--space-1) 0;
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.task-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.task-card-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  cursor: help;
+}
+
+.task-card-delete {
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  font-size: 18px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  align-self: flex-start;
+}
+
+.task-card-delete:hover {
+  background: #fee2e2;
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.error-fallback {
+  padding: var(--space-5);
+  text-align: center;
+}
